@@ -80,28 +80,20 @@ After saving the map, we relaunched navigation using the saved map and used RViz
 
 ## Part 3 — Jackal Simulation
 
-This section is reserved for the Clearpath Jackal simulation portion of the project.
+The setup for the jackal simulation was similar to the turtlebot simulation. The clearpath libraries had to be installed by following their offboard computer tutorial. Additionally the simulation packages had to be installed as well. One main difference is that the nav2 stack publishes commands to the `/a300_0000/cmd_vel_nav'` instead of `/a300_0000/cmd_vel`. This issue can be solved by running the command below to map the topics to each other. The simulation did run significantly slower which is likely due to the more intesive Nav2 stack as well as there being more features to simulate for the jackal
+```
+ros2 run topic_tools relay /a300_0000/cmd_vel_nav /a300_0000/cmd_vel
+```
 
-### Placeholder Evidence Files Already in the Repository
+#### Part 3 Map
+![Part 3 Terminal Output](figures/jackal-map.png)
 
 #### Part 3 Gazebo View
-![Part 3 Gazebo View](figures/goal3-gazebo.png)
+![Part 3 Gazebo View](figures/jackal-gazebo.png)
 
 #### Part 3 RViz Navigation View
-![Part 3 RViz Navigation View](figures/goal3-rviz.png)
+![Part 3 RViz Navigation View](figures/jackal.gif)
 
-#### Part 3 Terminal Output
-![Part 3 Terminal Output](figures/goal3-term.png)
-
-### Comparison Notes
-
-Compared with the TurtleBot3 workflow, the Jackal simulation workflow is expected to involve a different robot platform and Nav2 integration path. However, the overall navigation concepts remain the same: localization, path planning, costmaps, and autonomous goal execution in RViz.
-
-To be completed, this section will include:
-- the Gazebo screenshot for the Jackal simulation
-- the RViz navigation screenshot
-- the saved `map_jackal_sim.yaml` and `map_jackal_sim.pgm` files
-- a short comparison between the Jackal setup and the TurtleBot3 setup
 
 ---
 
@@ -110,6 +102,9 @@ To be completed, this section will include:
 ### How AI was used
 - Used to help draft and structure the README
 
+## Reid
+My AI use was mainly for debugging purposes. I encountered some issuses with my python enviornment as well as the command velocity topics mentioned above. AI was used to help debug error messages and give potential fixes to explore. I lost some of my conversation with ChatGPT (due to account issues) but I have one of the prompts I asked it below. AI was only used during part 3.
+> My clearpath simulation robot will not move when it gets a path. When I manually publish /cmd_vel it moves fine. I receive this issue from the nav2 stack periodically [controller_server-1] [WARN] [1774876678.009329846] [a300_0000.controller_server]: Control loop missed its desired rate of 20.0000 Hz. Current loop rate is inf Hz
 ---
 
 ## Conclusion
